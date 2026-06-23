@@ -14,7 +14,6 @@
       line-height: 1.6;
     }
 
-    /* ── 헤더 ── */
     .site-header {
       background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
       color: #fff;
@@ -30,7 +29,6 @@
     .progress-wrap { background: rgba(255,255,255,.2); height: 5px; }
     .progress-bar  { background: #34d399; height: 5px; width: 0; transition: width .4s; }
 
-    /* ── 본문 ── */
     .main { max-width: 860px; margin: 0 auto; padding: 24px 20px 72px; }
 
     .meta-row {
@@ -41,20 +39,23 @@
       font-size: .83rem;
       color: #64748b;
     }
+    .reset-btn {
+      background: none; border: 1px solid #cbd5e0; color: #64748b;
+      padding: 3px 11px; border-radius: 4px; cursor: pointer;
+      font-size: .73rem; font-family: inherit; transition: all .2s;
+    }
+    .reset-btn:hover { border-color: #ef4444; color: #ef4444; }
 
-    /* ── 문제 카드 ── */
     .q-card {
       background: #fff;
       border-radius: 12px;
       border: 1px solid #e2e8f0;
       box-shadow: 0 2px 8px rgba(0,0,0,.07);
-      margin-bottom: 26px;
+      margin-bottom: 22px;
       overflow: hidden;
     }
     .q-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: flex; align-items: center; gap: 10px;
       padding: 13px 20px;
       background: #f7faff;
       border-bottom: 1px solid #e2e8f0;
@@ -72,58 +73,9 @@
       font-size: .7rem; background: #dbeafe; color: #1d4ed8;
       padding: 2px 9px; border-radius: 20px; font-weight: 600; white-space: nowrap;
     }
-    .q-body { padding: 16px 20px; }
 
-    /* ── 힌트 ── */
-    .hint {
-      background: #fffbeb; border-left: 3px solid #f59e0b;
-      padding: 9px 13px; border-radius: 0 6px 6px 0;
-      margin-bottom: 14px; font-size: .855rem;
-    }
-    .hint-label { font-weight: 700; color: #b45309; margin-right: 5px; }
-    .hint-text  { color: #44403c; }
-    .hint-text code {
-      background: #fef3c7; padding: 1px 4px; border-radius: 3px;
-      font-family: 'Consolas', monospace; font-size: .82em;
-    }
+    .q-body { padding: 14px 20px; }
 
-    /* ── 힌트 토글 ── */
-    .hint-toggle {
-      background: none; border: 1px solid #d97706; color: #92400e;
-      padding: 1px 7px; border-radius: 4px; cursor: pointer;
-      font-size: .68rem; font-family: inherit;
-      margin-left: 6px; vertical-align: middle; transition: all .2s;
-    }
-    .hint-toggle:hover { background: #fef3c7; }
-    .hint-text.hint-hidden { display: none; }
-    .hint-placeholder { font-size: .82rem; color: #d97706; font-style: italic; }
-    .hint-all-btn {
-      background: none; border: 1.5px solid #f59e0b; color: #b45309;
-      padding: 3px 12px; border-radius: 5px; cursor: pointer;
-      font-size: .76rem; font-family: inherit; transition: all .2s;
-    }
-    .hint-all-btn:hover { background: #fffbeb; }
-    .hint-all-btn.all-hidden { background: #fffbeb; border-color: #b45309; }
-
-    /* ── 맥락 코드 ── */
-    .block-label { font-size: .78rem; color: #64748b; font-weight: 600; margin-bottom: 5px; }
-    .context-code {
-      background: #0d1117; color: #c9d1d9;
-      font-family: 'Consolas', 'D2Coding', 'Courier New', monospace;
-      font-size: .8rem; line-height: 1.65;
-      padding: 13px 16px; border-radius: 8px;
-      overflow-x: auto; margin-bottom: 14px;
-      white-space: pre; tab-size: 2;
-    }
-    .marker-line {
-      display: block;
-      background: rgba(251,191,36,.13); border-left: 3px solid #fbbf24;
-      margin-left: -16px; padding-left: 13px;
-      margin-right: -16px; padding-right: 16px;
-      color: #fbbf24; font-weight: 600;
-    }
-
-    /* ── 입력 영역 ── */
     .answer-textarea {
       width: 100%; min-height: 76px;
       background: #161b22; color: #e2e8f0;
@@ -140,18 +92,27 @@
     }
     .answer-textarea::placeholder { color: #4a5568; }
 
-    /* ── 구문 검사 ── */
     .btn-row { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 10px; }
+
     .check-btn {
       background: none; border: 1.5px solid #6366f1; color: #4338ca;
       padding: 5px 14px; border-radius: 6px; cursor: pointer;
       font-size: .78rem; font-family: inherit; transition: all .2s; white-space: nowrap;
     }
     .check-btn:hover { background: #eef2ff; }
+
+    .reveal-btn {
+      background: none; border: 1.5px solid #cbd5e0; color: #4a5568;
+      padding: 5px 14px; border-radius: 6px; cursor: pointer;
+      font-size: .78rem; font-family: inherit; transition: all .2s;
+    }
+    .reveal-btn:hover { border-color: #2563eb; color: #2563eb; }
+    .reveal-btn.open  { background: #eff6ff; border-color: #2563eb; color: #2563eb; }
+
     .check-result {
       background: #0f172a; border-radius: 6px;
       padding: 8px 12px; font-size: .78rem;
-      font-family: 'Consolas', monospace; width: 100%; margin-top: 4px;
+      font-family: 'Consolas', monospace; width: 100%; margin-bottom: 8px;
     }
     .check-ok   { color: #34d399; font-weight: 700; }
     .check-fail { color: #f87171; font-weight: 700; display: block; margin-bottom: 4px; }
@@ -159,15 +120,6 @@
     .check-result li { color: #fca5a5; margin: 2px 0; line-height: 1.5; }
     .check-empty { color: #94a3b8; }
 
-    /* ── 정답 토글 ── */
-    .reveal-btn {
-      display: inline-block; background: none;
-      border: 1.5px solid #cbd5e0; color: #4a5568;
-      padding: 5px 14px; border-radius: 6px; cursor: pointer;
-      font-size: .78rem; font-family: inherit; transition: all .2s;
-    }
-    .reveal-btn:hover { border-color: #2563eb; color: #2563eb; }
-    .reveal-btn.open  { background: #eff6ff; border-color: #2563eb; color: #2563eb; }
     .answer-block {
       background: #0d1117; color: #c9d1d9;
       font-family: 'Consolas', 'D2Coding', 'Courier New', monospace;
@@ -178,7 +130,6 @@
     }
     .hidden { display: none; }
 
-    /* ── 하단 바 ── */
     .bottom-bar {
       position: fixed; bottom: 0; left: 0; right: 0;
       background: #1e3a5f; color: #e2e8f0;
@@ -186,12 +137,34 @@
       font-size: .82rem; z-index: 99;
     }
     .save-note { font-size: .73rem; color: #94a3b8; margin-left: auto; }
-    .reset-btn {
-      background: none; border: 1px solid rgba(255,255,255,.25); color: #94a3b8;
-      padding: 3px 11px; border-radius: 4px; cursor: pointer;
-      font-size: .73rem; font-family: inherit; transition: all .2s;
+
+    .hint {
+      background: #fffbeb; border-left: 3px solid #f59e0b;
+      padding: 9px 13px; border-radius: 0 6px 6px 0;
+      margin-bottom: 14px; font-size: .855rem;
     }
-    .reset-btn:hover { border-color: #ef4444; color: #ef4444; }
+    .hint-label { font-weight: 700; color: #b45309; margin-right: 5px; }
+    .hint-text  { color: #44403c; }
+    .hint-text code {
+      background: #fef3c7; padding: 1px 4px; border-radius: 3px;
+      font-family: 'Consolas', monospace; font-size: .82em;
+    }
+    .hint-toggle {
+      background: none; border: 1px solid #d97706; color: #92400e;
+      padding: 1px 7px; border-radius: 4px; cursor: pointer;
+      font-size: .68rem; font-family: inherit;
+      margin-left: 6px; vertical-align: middle; transition: all .2s;
+    }
+    .hint-toggle:hover { background: #fef3c7; }
+    .hint-text.hint-hidden { display: none; }
+    .hint-placeholder { font-size: .82rem; color: #d97706; font-style: italic; }
+    .hint-all-btn {
+      background: none; border: 1.5px solid #f59e0b; color: #b45309;
+      padding: 3px 12px; border-radius: 5px; cursor: pointer;
+      font-size: .76rem; font-family: inherit; transition: all .2s;
+    }
+    .hint-all-btn:hover { background: #fffbeb; }
+    .hint-all-btn.all-hidden { background: #fffbeb; border-color: #b45309; }
 
     @media (max-width: 580px) {
       .q-tag { display: none; }
@@ -220,7 +193,7 @@
     </div>
   </div>
 
-  <!-- ────────────── 문제 1 ────────────── -->
+  <!-- 문제 1 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">1</div>
@@ -232,12 +205,6 @@
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text">RFID 통신에 필요한 라이브러리 2개를 포함하고, RFID·부저·IR·모터·LED에 연결된 핀 번호를 <code>#define</code>과 <code>const int</code>로 각각 선언한다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">// ✍ 여기에 코드 작성 (문제 1)
-
-// 객체 생성
-MFRC522 mfrc522(SS_PIN, RST_PIN);</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="1" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(1)">구문 검사</button>
@@ -263,7 +230,7 @@ const int MOTOR_A_IB = 8;
     </div>
   </div>
 
-  <!-- ────────────── 문제 2 ────────────── -->
+  <!-- 문제 2 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">2</div>
@@ -275,14 +242,6 @@ const int MOTOR_A_IB = 8;
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text">핀 번호 두 개를 인수로 RFID 객체를 생성하고, 허가된 카드의 UID 4바이트를 16진수 리터럴 배열로 초기화한다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">#define LED_B_PIN 4
-
-// ✍ 여기에 코드 작성 (문제 2)
-
-// RGB LED 색상 제어 함수
-void setLEDColor(int r, int g, int b) {</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="2" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(2)">구문 검사</button>
@@ -298,7 +257,7 @@ byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};</pre>
     </div>
   </div>
 
-  <!-- ────────────── 문제 3 ────────────── -->
+  <!-- 문제 3 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">3</div>
@@ -310,13 +269,6 @@ byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};</pre>
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text"><code>int r, g, b</code> 인수를 받아 각 LED 핀에 <code>digitalWrite</code>로 값을 출력하는 함수 전체를 작성한다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};
-
-// ✍ 여기에 코드 작성 (문제 3)
-
-void setup() {</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="3" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(3)">구문 검사</button>
@@ -332,7 +284,7 @@ void setLEDColor(int r, int g, int b) {
     </div>
   </div>
 
-  <!-- ────────────── 문제 4 ────────────── -->
+  <!-- 문제 4 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">4</div>
@@ -344,13 +296,6 @@ void setLEDColor(int r, int g, int b) {
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text">시리얼·SPI·RFID를 차례로 시작하고, 부저·IR·모터·LED 핀의 모드를 <code>pinMode</code>로 설정한 뒤 시작 메시지와 초기 대기 LED 색을 출력한다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">}  // setLEDColor 함수 끝
-
-// ✍ 여기에 코드 작성 (문제 4)
-
-void loop() {</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="4" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(4)">구문 검사</button>
@@ -379,7 +324,7 @@ void loop() {</pre>
     </div>
   </div>
 
-  <!-- ────────────── 문제 5 ────────────── -->
+  <!-- 문제 5 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">5</div>
@@ -391,15 +336,6 @@ void loop() {</pre>
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text">IR 센서 값을 읽어 LOW(물체 감지)이면 빨간 LED를 켜고, 400 Hz → 1000 Hz 범위를 10씩 올리며 <code>tone()</code>으로 경보음을 낸다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">  setLEDColor(LOW, LOW, HIGH);  // 초기 상태: 파란색 대기
-}
-
-// ✍ 여기에 코드 작성 (문제 5)
-
-    // 빨간색 LED 끄기 (점멸 효과)
-    setLEDColor(LOW, LOW, LOW);</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="5" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(5)">구문 검사</button>
@@ -424,7 +360,7 @@ void loop() {</pre>
     </div>
   </div>
 
-  <!-- ────────────── 문제 6 ────────────── -->
+  <!-- 문제 6 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">6</div>
@@ -436,17 +372,6 @@ void loop() {</pre>
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text">1000 Hz → 400 Hz로 부저를 낮추고, else 분기에서는 <code>noTone</code>·모터 정지·파란 LED로 평상시 대기 상태를 유지한다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">    for (int hz = 400; hz &lt;= 1000; hz += 10) {
-      tone(BUZZER_PIN, hz);
-      delay(5);
-    }
-
-// ✍ 여기에 코드 작성 (문제 6)
-
-  // 2. RFID 인식 로직
-  // 카드가 없으면 다시 루프 처음으로 돌아감</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="6" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(6)">구문 검사</button>
@@ -473,7 +398,7 @@ void loop() {</pre>
     </div>
   </div>
 
-  <!-- ────────────── 문제 7 ────────────── -->
+  <!-- 문제 7 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">7</div>
@@ -485,14 +410,6 @@ void loop() {</pre>
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text">새 카드가 없거나 카드 읽기에 실패하면 즉시 <code>return</code>으로 <code>loop()</code> 처음으로 돌아간다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">    setLEDColor(LOW, LOW, HIGH);  // 파란색 유지
-  }
-
-// ✍ 여기에 코드 작성 (문제 7)
-
-  bool isRegistered = true;</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="7" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(7)">구문 검사</button>
@@ -507,7 +424,7 @@ void loop() {</pre>
     </div>
   </div>
 
-  <!-- ────────────── 문제 8 ────────────── -->
+  <!-- 문제 8 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">8</div>
@@ -519,16 +436,6 @@ void loop() {</pre>
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text">변수를 <code>true</code>로 초기화한 뒤, 4바이트 UID를 인덱스로 하나씩 비교하여 불일치 바이트가 있으면 <code>false</code>로 설정하고 반복을 즉시 종료한다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">  if (!mfrc522.PICC_IsNewCardPresent() || !mfrc522.PICC_ReadCardSerial()) {
-    return;
-  }
-
-// ✍ 여기에 코드 작성 (문제 8)
-
-  // 3. 잠금 해제 및 자동 잠금 로직
-  if (isRegistered) {</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="8" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(8)">구문 검사</button>
@@ -545,7 +452,7 @@ void loop() {</pre>
     </div>
   </div>
 
-  <!-- ────────────── 문제 9 ────────────── -->
+  <!-- 문제 9 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">9</div>
@@ -557,16 +464,6 @@ void loop() {</pre>
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text">등록 카드이면 초록 LED 켜고 모터 정회전으로 문을 열어 5초 대기한 뒤, 역회전으로 닫고 모터 정지 후 파란 LED 대기로 복귀한다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">      break;
-    }
-  }
-
-// ✍ 여기에 코드 작성 (문제 9)
-
-  } else {
-    // 미등록 카드일 경우</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="9" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(9)">구문 검사</button>
@@ -601,7 +498,7 @@ void loop() {</pre>
     </div>
   </div>
 
-  <!-- ────────────── 문제 10 ────────────── -->
+  <!-- 문제 10 -->
   <div class="q-card">
     <div class="q-header">
       <div class="q-num">10</div>
@@ -613,13 +510,6 @@ void loop() {</pre>
         <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
         <span class="hint-text">미등록 카드이면 빨간 LED를 1초 켰다 끄고, 마지막에 <code>PICC_HaltA</code>와 <code>PCD_StopCrypto1</code>으로 통신을 정리한다.</span>
       </div>
-      <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">    Serial.println("대기 상태로 돌아갑니다.");
-
-// ✍ 여기에 코드 작성 (문제 10)
-
-}  // loop() 끝</pre>
-      <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="10" placeholder="여기에 코드를 작성하세요..."></textarea>
       <div class="btn-row">
         <button class="check-btn" onclick="checkSyntax(10)">구문 검사</button>
@@ -649,7 +539,6 @@ void loop() {</pre>
 <script>
   const STORAGE_KEY = 'smartsafe_v3_answers';
 
-  /* ── 정답 토글 ── */
   function toggleAnswer(id, btn) {
     const block = document.getElementById(id);
     const hidden = block.classList.toggle('hidden');
@@ -657,40 +546,9 @@ void loop() {</pre>
     btn.classList.toggle('open', !hidden);
   }
 
-  /* ── 힌트 토글 ── */
-  function toggleHint(btn) {
-    const hint = btn.closest('.hint');
-    const text = hint.querySelector('.hint-text');
-    const hidden = text.classList.toggle('hint-hidden');
-    btn.textContent = hidden ? '보기' : '숨기기';
-    const ph = hint.querySelector('.hint-placeholder');
-    if (hidden && !ph) {
-      hint.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 숨김</span>');
-    } else if (!hidden && ph) {
-      ph.remove();
-    }
-  }
-
-  function toggleAllHints() {
-    const masterBtn = document.getElementById('hint-all-btn');
-    const hiding = masterBtn.dataset.state !== 'hidden';
-    document.querySelectorAll('.hint-text').forEach(t => t.classList.toggle('hint-hidden', hiding));
-    document.querySelectorAll('.hint-toggle').forEach(b => b.textContent = hiding ? '보기' : '숨기기');
-    document.querySelectorAll('.hint-placeholder').forEach(p => p.remove());
-    if (hiding) {
-      document.querySelectorAll('.hint').forEach(h => {
-        h.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 숨김</span>');
-      });
-    }
-    masterBtn.dataset.state = hiding ? 'hidden' : 'shown';
-    masterBtn.textContent   = hiding ? '힌트 전체 보기' : '힌트 전체 숨기기';
-    masterBtn.classList.toggle('all-hidden', hiding);
-  }
-
-  /* ── 구문 검사 (Arduino/C++ 기준) ── */
   function checkSyntax(qNum) {
-    const ta   = document.querySelector(`[data-q="${qNum}"]`);
-    const div  = document.getElementById('check' + qNum);
+    const ta  = document.querySelector(`[data-q="${qNum}"]`);
+    const div = document.getElementById('check' + qNum);
     const code = ta.value;
 
     div.classList.remove('hidden');
@@ -707,17 +565,17 @@ void loop() {</pre>
     const braceStack = [], parenStack = [];
 
     for (let i = 0; i < lines.length; i++) {
-      const raw  = lines[i];
-      const ln   = i + 1;
-      let inStr  = false, inChr = false, inLine = false;
+      const raw = lines[i];
+      const ln  = i + 1;
+      let inStr = false, inChr = false, inLine = false;
 
       for (let j = 0; j < raw.length; j++) {
         const c = raw[j], nx = raw[j + 1];
 
-        if (inBlock)  { if (c === '*' && nx === '/') { inBlock = false; j++; } continue; }
-        if (inLine)   continue;
-        if (inStr)    { if (c === '\\') j++; else if (c === '"') inStr = false; continue; }
-        if (inChr)    { if (c === '\\') j++; else if (c === "'") inChr = false; continue; }
+        if (inBlock) { if (c === '*' && nx === '/') { inBlock = false; j++; } continue; }
+        if (inLine)  continue;
+        if (inStr)   { if (c === '\\') j++; else if (c === '"') inStr = false; continue; }
+        if (inChr)   { if (c === '\\') j++; else if (c === "'") inChr = false; continue; }
 
         if (c === '/' && nx === '/') { inLine  = true;  continue; }
         if (c === '/' && nx === '*') { inBlock = true; j++; continue; }
@@ -741,7 +599,6 @@ void loop() {</pre>
         }
       }
 
-      /* 세미콜론 누락 간이 검사 */
       const t = raw.trim();
       if (t && !inBlock && !inLine &&
           !t.startsWith('//') && !t.startsWith('#') &&
@@ -775,7 +632,35 @@ void loop() {</pre>
     }
   }
 
-  /* ── 진행률 ── */
+  function toggleHint(btn) {
+    const hint = btn.closest('.hint');
+    const text = hint.querySelector('.hint-text');
+    const hidden = text.classList.toggle('hint-hidden');
+    btn.textContent = hidden ? '보기' : '숨기기';
+    const ph = hint.querySelector('.hint-placeholder');
+    if (hidden && !ph) {
+      hint.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 숨김</span>');
+    } else if (!hidden && ph) {
+      ph.remove();
+    }
+  }
+
+  function toggleAllHints() {
+    const masterBtn = document.getElementById('hint-all-btn');
+    const hiding = masterBtn.dataset.state !== 'hidden';
+    document.querySelectorAll('.hint-text').forEach(t => t.classList.toggle('hint-hidden', hiding));
+    document.querySelectorAll('.hint-toggle').forEach(b => b.textContent = hiding ? '보기' : '숨기기');
+    document.querySelectorAll('.hint-placeholder').forEach(p => p.remove());
+    if (hiding) {
+      document.querySelectorAll('.hint').forEach(h => {
+        h.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 숨김</span>');
+      });
+    }
+    masterBtn.dataset.state = hiding ? 'hidden' : 'shown';
+    masterBtn.textContent   = hiding ? '힌트 전체 보기' : '힌트 전체 숨기기';
+    masterBtn.classList.toggle('all-hidden', hiding);
+  }
+
   function updateProgress() {
     const tas  = document.querySelectorAll('.answer-textarea');
     const done = [...tas].filter(t => t.value.trim() !== '').length;
@@ -786,7 +671,6 @@ void loop() {</pre>
     document.getElementById('bottom-text').textContent   = txt;
   }
 
-  /* ── 자동 저장 ── */
   let saveTimer;
   function scheduleSave() {
     clearTimeout(saveTimer);
@@ -820,18 +704,6 @@ void loop() {</pre>
     document.getElementById('save-note').textContent = '초기화됨';
   }
 
-  /* ── 마커 라인 강조 ── */
-  function highlightMarkers() {
-    document.querySelectorAll('.context-code').forEach(pre => {
-      pre.innerHTML = pre.innerHTML.split('\n').map(line =>
-        line.includes('✍')
-          ? '<span class="marker-line">' + line + '</span>'
-          : line
-      ).join('\n');
-    });
-  }
-
-  /* ── 이벤트 ── */
   document.querySelectorAll('.answer-textarea').forEach(ta => {
     ta.addEventListener('input', function () {
       this.style.height = 'auto';
@@ -843,7 +715,6 @@ void loop() {</pre>
 
   loadAnswers();
   updateProgress();
-  highlightMarkers();
 </script>
 </body>
 </html>
