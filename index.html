@@ -24,23 +24,14 @@
       z-index: 100;
       box-shadow: 0 2px 10px rgba(0,0,0,.35);
     }
-    .header-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 20px 16px;
-    }
+    .header-inner { max-width: 860px; margin: 0 auto; padding: 0 20px 16px; }
     .site-header h1 { font-size: 1.25rem; font-weight: 700; margin-bottom: 3px; }
     .site-header p  { font-size: 0.82rem; opacity: .82; }
-
     .progress-wrap { background: rgba(255,255,255,.2); height: 5px; }
     .progress-bar  { background: #34d399; height: 5px; width: 0; transition: width .4s; }
 
     /* ── 본문 ── */
-    .main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 24px 20px 72px;
-    }
+    .main { max-width: 860px; margin: 0 auto; padding: 24px 20px 72px; }
 
     .meta-row {
       display: flex;
@@ -60,7 +51,6 @@
       margin-bottom: 26px;
       overflow: hidden;
     }
-
     .q-header {
       display: flex;
       align-items: center;
@@ -70,10 +60,8 @@
       border-bottom: 1px solid #e2e8f0;
     }
     .q-num {
-      background: #2563eb;
-      color: #fff;
-      font-size: .72rem;
-      font-weight: 700;
+      background: #2563eb; color: #fff;
+      font-size: .72rem; font-weight: 700;
       width: 26px; height: 26px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
@@ -81,85 +69,70 @@
     }
     .q-title { font-weight: 700; font-size: .92rem; flex: 1; }
     .q-tag {
-      font-size: .7rem;
-      background: #dbeafe;
-      color: #1d4ed8;
-      padding: 2px 9px;
-      border-radius: 20px;
-      font-weight: 600;
-      white-space: nowrap;
+      font-size: .7rem; background: #dbeafe; color: #1d4ed8;
+      padding: 2px 9px; border-radius: 20px; font-weight: 600; white-space: nowrap;
     }
-
     .q-body { padding: 16px 20px; }
 
     /* ── 힌트 ── */
     .hint {
-      background: #fffbeb;
-      border-left: 3px solid #f59e0b;
-      padding: 9px 13px;
-      border-radius: 0 6px 6px 0;
-      margin-bottom: 14px;
-      font-size: .855rem;
+      background: #fffbeb; border-left: 3px solid #f59e0b;
+      padding: 9px 13px; border-radius: 0 6px 6px 0;
+      margin-bottom: 14px; font-size: .855rem;
     }
     .hint-label { font-weight: 700; color: #b45309; margin-right: 5px; }
     .hint-text  { color: #44403c; }
     .hint-text code {
-      background: #fef3c7;
-      padding: 1px 4px;
-      border-radius: 3px;
-      font-family: 'Consolas', monospace;
-      font-size: .82em;
+      background: #fef3c7; padding: 1px 4px; border-radius: 3px;
+      font-family: 'Consolas', monospace; font-size: .82em;
     }
+
+    /* ── 힌트 토글 ── */
+    .hint-toggle {
+      background: none; border: 1px solid #d97706; color: #92400e;
+      padding: 1px 7px; border-radius: 4px; cursor: pointer;
+      font-size: .68rem; font-family: inherit;
+      margin-left: 6px; vertical-align: middle; transition: all .2s;
+    }
+    .hint-toggle:hover { background: #fef3c7; }
+    .hint-text.hint-hidden { display: none; }
+    .hint-placeholder { font-size: .82rem; color: #d97706; font-style: italic; }
+    .hint-all-btn {
+      background: none; border: 1.5px solid #f59e0b; color: #b45309;
+      padding: 3px 12px; border-radius: 5px; cursor: pointer;
+      font-size: .76rem; font-family: inherit; transition: all .2s;
+    }
+    .hint-all-btn:hover { background: #fffbeb; }
+    .hint-all-btn.all-hidden { background: #fffbeb; border-color: #b45309; }
 
     /* ── 맥락 코드 ── */
-    .block-label {
-      font-size: .78rem;
-      color: #64748b;
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-
+    .block-label { font-size: .78rem; color: #64748b; font-weight: 600; margin-bottom: 5px; }
     .context-code {
-      background: #0d1117;
-      color: #c9d1d9;
+      background: #0d1117; color: #c9d1d9;
       font-family: 'Consolas', 'D2Coding', 'Courier New', monospace;
-      font-size: .8rem;
-      line-height: 1.65;
-      padding: 13px 16px;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin-bottom: 14px;
-      white-space: pre;
-      tab-size: 2;
+      font-size: .8rem; line-height: 1.65;
+      padding: 13px 16px; border-radius: 8px;
+      overflow-x: auto; margin-bottom: 14px;
+      white-space: pre; tab-size: 2;
     }
-
     .marker-line {
       display: block;
-      background: rgba(251,191,36,.13);
-      border-left: 3px solid #fbbf24;
+      background: rgba(251,191,36,.13); border-left: 3px solid #fbbf24;
       margin-left: -16px; padding-left: 13px;
       margin-right: -16px; padding-right: 16px;
-      color: #fbbf24;
-      font-weight: 600;
+      color: #fbbf24; font-weight: 600;
     }
 
     /* ── 입력 영역 ── */
     .answer-textarea {
-      width: 100%;
-      min-height: 76px;
-      background: #161b22;
-      color: #e2e8f0;
+      width: 100%; min-height: 76px;
+      background: #161b22; color: #e2e8f0;
       font-family: 'Consolas', 'D2Coding', 'Courier New', monospace;
-      font-size: .8rem;
-      line-height: 1.65;
-      padding: 11px 14px;
-      border: 1.5px solid #30363d;
-      border-radius: 8px;
-      resize: vertical;
-      outline: none;
+      font-size: .8rem; line-height: 1.65;
+      padding: 11px 14px; border: 1.5px solid #30363d;
+      border-radius: 8px; resize: vertical; outline: none;
       transition: border-color .2s, box-shadow .2s;
-      margin-bottom: 11px;
-      tab-size: 2;
+      margin-bottom: 8px; tab-size: 2;
     }
     .answer-textarea:focus {
       border-color: #3b82f6;
@@ -167,99 +140,58 @@
     }
     .answer-textarea::placeholder { color: #4a5568; }
 
+    /* ── 구문 검사 ── */
+    .btn-row { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 10px; }
+    .check-btn {
+      background: none; border: 1.5px solid #6366f1; color: #4338ca;
+      padding: 5px 14px; border-radius: 6px; cursor: pointer;
+      font-size: .78rem; font-family: inherit; transition: all .2s; white-space: nowrap;
+    }
+    .check-btn:hover { background: #eef2ff; }
+    .check-result {
+      background: #0f172a; border-radius: 6px;
+      padding: 8px 12px; font-size: .78rem;
+      font-family: 'Consolas', monospace; width: 100%; margin-top: 4px;
+    }
+    .check-ok   { color: #34d399; font-weight: 700; }
+    .check-fail { color: #f87171; font-weight: 700; display: block; margin-bottom: 4px; }
+    .check-result ul { padding-left: 16px; }
+    .check-result li { color: #fca5a5; margin: 2px 0; line-height: 1.5; }
+    .check-empty { color: #94a3b8; }
+
     /* ── 정답 토글 ── */
     .reveal-btn {
-      display: inline-block;
-      background: none;
-      border: 1.5px solid #cbd5e0;
-      color: #4a5568;
-      padding: 5px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: .78rem;
-      font-family: inherit;
-      transition: all .2s;
-      margin-bottom: 10px;
+      display: inline-block; background: none;
+      border: 1.5px solid #cbd5e0; color: #4a5568;
+      padding: 5px 14px; border-radius: 6px; cursor: pointer;
+      font-size: .78rem; font-family: inherit; transition: all .2s;
     }
     .reveal-btn:hover { border-color: #2563eb; color: #2563eb; }
     .reveal-btn.open  { background: #eff6ff; border-color: #2563eb; color: #2563eb; }
-
     .answer-block {
-      background: #0d1117;
-      color: #c9d1d9;
+      background: #0d1117; color: #c9d1d9;
       font-family: 'Consolas', 'D2Coding', 'Courier New', monospace;
-      font-size: .8rem;
-      line-height: 1.65;
-      padding: 13px 16px;
-      border-radius: 8px;
-      overflow-x: auto;
-      border-left: 3px solid #34d399;
-      white-space: pre;
-      tab-size: 2;
+      font-size: .8rem; line-height: 1.65;
+      padding: 13px 16px; border-radius: 8px;
+      overflow-x: auto; border-left: 3px solid #34d399;
+      white-space: pre; tab-size: 2;
     }
     .hidden { display: none; }
 
     /* ── 하단 바 ── */
     .bottom-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: #1e3a5f;
-      color: #e2e8f0;
-      padding: 9px 20px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: .82rem;
-      z-index: 99;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: #1e3a5f; color: #e2e8f0;
+      padding: 9px 20px; display: flex; align-items: center; gap: 16px;
+      font-size: .82rem; z-index: 99;
     }
     .save-note { font-size: .73rem; color: #94a3b8; margin-left: auto; }
     .reset-btn {
-      background: none;
-      border: 1px solid rgba(255,255,255,.25);
-      color: #94a3b8;
-      padding: 3px 11px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: .73rem;
-      font-family: inherit;
-      transition: all .2s;
+      background: none; border: 1px solid rgba(255,255,255,.25); color: #94a3b8;
+      padding: 3px 11px; border-radius: 4px; cursor: pointer;
+      font-size: .73rem; font-family: inherit; transition: all .2s;
     }
     .reset-btn:hover { border-color: #ef4444; color: #ef4444; }
-
-    /* ── 힌트 토글 ── */
-    .hint-toggle {
-      background: none;
-      border: 1px solid #d97706;
-      color: #92400e;
-      padding: 1px 7px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: .68rem;
-      font-family: inherit;
-      margin-left: 6px;
-      vertical-align: middle;
-      transition: all .2s;
-    }
-    .hint-toggle:hover { background: #fef3c7; }
-    .hint-text.hint-hidden { display: none; }
-    .hint-placeholder {
-      font-size: .82rem;
-      color: #d97706;
-      font-style: italic;
-    }
-    .hint-all-btn {
-      background: none;
-      border: 1.5px solid #f59e0b;
-      color: #b45309;
-      padding: 3px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: .76rem;
-      font-family: inherit;
-      transition: all .2s;
-    }
-    .hint-all-btn:hover { background: #fffbeb; }
-    .hint-all-btn.all-hidden { background: #fffbeb; border-color: #b45309; }
 
     @media (max-width: 580px) {
       .q-tag { display: none; }
@@ -304,25 +236,30 @@
       <pre class="context-code">// ✍ 여기에 코드 작성 (문제 1)
 
 // 객체 생성
-MFRC522 mfrc522(SS_PIN, RST_PIN);   // SS핀과 RST핀을 사용하는 MFRC522 객체 생성</pre>
+MFRC522 mfrc522(SS_PIN, RST_PIN);</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="1" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans1', this)">정답 보기 ▼</button>
-      <pre class="answer-block hidden" id="ans1">#include &lt;SPI.h&gt;              // SPI 통신 라이브러리 포함 (RFID 모듈과 통신하기 위함)
-#include &lt;MFRC522.h&gt;          // RFID(MFRC522) 제어 라이브러리 포함
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(1)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans1', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check1"></div>
+      <pre class="answer-block hidden" id="ans1">#include &lt;SPI.h&gt;
+#include &lt;MFRC522.h&gt;
 
 // ---------------- 핀 번호 설정 ---------------
-#define RST_PIN       9       // RFID 리셋 핀을 9번으로 정의
-#define SS_PIN        10      // RFID SS(SDA) 핀을 10번으로 정의
+#define RST_PIN       9
+#define SS_PIN        10
 #define BUZZER_PIN    5   // 서보모터 대신 부저 핀으로 변경
-#define IR_SENSOR_PIN 6       // 적외선(IR) 센서 핀을 6번으로 정의
+#define IR_SENSOR_PIN 6
 
 // DC 모터 핀 (이제 문 개방/폐쇄 용도로 사용)
-const int MOTOR_A_IA = 7;     // 모터 정회전 제어 핀을 7번으로 지정
-const int MOTOR_A_IB = 8;     // 모터 역회전 제어 핀을 8번으로 지정
-#define LED_R_PIN 2           // RGB LED의 빨간색(R) 핀을 2번으로 정의
-#define LED_G_PIN 3           // RGB LED의 초록색(G) 핀을 3번으로 정의
-#define LED_B_PIN 4           // RGB LED의 파란색(B) 핀을 4번으로 정의</pre>
+const int MOTOR_A_IA = 7;
+const int MOTOR_A_IB = 8;
+
+#define LED_R_PIN 2
+#define LED_G_PIN 3
+#define LED_B_PIN 4</pre>
     </div>
   </div>
 
@@ -339,7 +276,7 @@ const int MOTOR_A_IB = 8;     // 모터 역회전 제어 핀을 8번으로 지�
         <span class="hint-text">핀 번호 두 개를 인수로 RFID 객체를 생성하고, 허가된 카드의 UID 4바이트를 16진수 리터럴 배열로 초기화한다.</span>
       </div>
       <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">#define LED_B_PIN 4           // RGB LED의 파란색(B) 핀을 4번으로 정의
+      <pre class="context-code">#define LED_B_PIN 4
 
 // ✍ 여기에 코드 작성 (문제 2)
 
@@ -347,13 +284,17 @@ const int MOTOR_A_IB = 8;     // 모터 역회전 제어 핀을 8번으로 지�
 void setLEDColor(int r, int g, int b) {</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="2" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans2', this)">정답 보기 ▼</button>
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(2)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans2', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check2"></div>
       <pre class="answer-block hidden" id="ans2">// 객체 생성
-MFRC522 mfrc522(SS_PIN, RST_PIN);   // SS핀과 RST핀을 사용하는 MFRC522 객체 생성
+MFRC522 mfrc522(SS_PIN, RST_PIN);
 
-// ---------------- 등록된 R  Serial.begin      FID 태그 값 ---------------
+// ---------------- 등록된 RFID 태그 값 ---------------
 // 본인 카드의 UID로 반드시 변경하세요!
-byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};   // 등록된 카드의 UID 4바이트를 배열로 저장</pre>
+byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};</pre>
     </div>
   </div>
 
@@ -370,19 +311,23 @@ byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};   // 등록된 카드의 UID 4
         <span class="hint-text"><code>int r, g, b</code> 인수를 받아 각 LED 핀에 <code>digitalWrite</code>로 값을 출력하는 함수 전체를 작성한다.</span>
       </div>
       <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};   // 등록된 카드의 UID 4바이트를 배열로 저장
+      <pre class="context-code">byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};
 
 // ✍ 여기에 코드 작성 (문제 3)
 
-void setup() {                            // 초기 설정 함수 (전원 인가 시 1회 실행)</pre>
+void setup() {</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="3" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans3', this)">정답 보기 ▼</button>
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(3)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans3', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check3"></div>
       <pre class="answer-block hidden" id="ans3">// RGB LED 색상 제어 함수
-void setLEDColor(int r, int g, int b) {   // R,G,B 값을 받아 LED 색을 제어하는 함수 정의
-  digitalWrite(LED_R_PIN, r);             // 빨간색 핀에 r 값 출력
-  digitalWrite(LED_G_PIN, g);             // 초록색 핀에 g 값 출력
-  digitalWrite(LED_B_PIN, b);             // 파란색 핀에 b 값 출력
+void setLEDColor(int r, int g, int b) {
+  digitalWrite(LED_R_PIN, r);
+  digitalWrite(LED_G_PIN, g);
+  digitalWrite(LED_B_PIN, b);
 }</pre>
     </div>
   </div>
@@ -404,24 +349,31 @@ void setLEDColor(int r, int g, int b) {   // R,G,B 값을 받아 LED 색을 제�
 
 // ✍ 여기에 코드 작성 (문제 4)
 
-void loop() {                            // 반복 실행 함수 (계속 반복됨)</pre>
+void loop() {</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="4" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans4', this)">정답 보기 ▼</button>
-      <pre class="answer-block hidden" id="ans4">void setup() {                            // 초기 설정 함수 (전원 인가 시 1회 실행)
-  Serial.begin(9600);                     // 시리얼 통신 시작 (통신속도 9600bps)
-  SPI.begin();                            // SPI 통신 시작
-  mfrc522.PCD_Init();                     // RFID 모듈 초기화
-  pinMode(BUZZER_PIN, OUTPUT);            // 부저 핀을 출력 모드로 설정
-  pinMode(IR_SENSOR_PIN, INPUT);          // IR 센서 핀을 입력 모드로 설정
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(4)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans4', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check4"></div>
+      <pre class="answer-block hidden" id="ans4">void setup() {
+  Serial.begin(9600);
+  SPI.begin();
+  mfrc522.PCD_Init();
+
+  pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(IR_SENSOR_PIN, INPUT);
 
   // 모터 제어 핀 출력 설정 (문 제어용)
-  pinMode(MOTOR_A_IA, OUTPUT);            // 모터 정회전 핀을 출력 모드로 설정
-  pinMode(MOTOR_A_IB, OUTPUT);            // 모터 역회전 핀을 출력 모드로 설정
-  pinMode(LED_R_PIN, OUTPUT);            // LED 빨간색 핀을 출력 모드로 설정
-  pinMode(LED_G_PIN, OUTPUT);            // LED 초록색 핀을 출력 모드로 설정
-  pinMode(LED_B_PIN, OUTPUT);            // LED 파란색 핀을 출력 모드로 설정
-  Serial.println("스마트 보안 금고 V3 가동 시작!");   // 시작 메시지를 시리얼 모니터에 출력
+  pinMode(MOTOR_A_IA, OUTPUT);
+  pinMode(MOTOR_A_IB, OUTPUT);
+
+  pinMode(LED_R_PIN, OUTPUT);
+  pinMode(LED_G_PIN, OUTPUT);
+  pinMode(LED_B_PIN, OUTPUT);
+
+  Serial.println("스마트 보안 금고 V3 가동 시작!");
   setLEDColor(LOW, LOW, HIGH);  // 초기 상태: 파란색 대기
 }</pre>
     </div>
@@ -446,22 +398,28 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
 // ✍ 여기에 코드 작성 (문제 5)
 
     // 빨간색 LED 끄기 (점멸 효과)
-    setLEDColor(LOW, LOW, LOW);          // LED를 모두 꺼서 점멸 효과 만들기</pre>
+    setLEDColor(LOW, LOW, LOW);</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="5" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans5', this)">정답 보기 ▼</button>
-      <pre class="answer-block hidden" id="ans5">void loop() {                            // 반복 실행 함수 (계속 반복됨)
-  int irState = digitalRead(IR_SENSOR_PIN);   // IR 센서 값을 읽어 irState에 저장
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(5)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans5', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check5"></div>
+      <pre class="answer-block hidden" id="ans5">void loop() {
+  int irState = digitalRead(IR_SENSOR_PIN);
 
   // 1. 보안 장치 로직 (IR 감지 시: 사이렌 및 빨간색 점멸)
-  if (irState == LOW) {                  // IR 센서가 물체를 감지했다면(LOW)
-    Serial.println("경고: 미승인 접근 감지! 사이렌 작동!");   // 경고 메시지 출력
+  if (irState == LOW) {
+    Serial.println("경고: 미승인 접근 감지! 사이렌 작동!");
+
     // 빨간색 LED 켜기
-    setLEDColor(HIGH, LOW, LOW);         // LED를 빨간색으로 켜기
+    setLEDColor(HIGH, LOW, LOW);
+
     // 사이렌 소리 (낮은 음에서 높은 음으로)
-    for (int hz = 400; hz &lt;= 1000; hz += 10) {   // 400Hz부터 1000Hz까지 10씩 증가 반복
-      tone(BUZZER_PIN, hz);              // 부저로 해당 주파수의 소리 출력
-      delay(5);                          // 5ms 대기
+    for (int hz = 400; hz &lt;= 1000; hz += 10) {
+      tone(BUZZER_PIN, hz);
+      delay(5);
     }</pre>
     </div>
   </div>
@@ -490,19 +448,26 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
   // 카드가 없으면 다시 루프 처음으로 돌아감</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="6" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans6', this)">정답 보기 ▼</button>
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(6)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans6', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check6"></div>
       <pre class="answer-block hidden" id="ans6">    // 빨간색 LED 끄기 (점멸 효과)
-    setLEDColor(LOW, LOW, LOW);          // LED를 모두 꺼서 점멸 효과 만들기
+    setLEDColor(LOW, LOW, LOW);
+
     // 사이렌 소리 (높은 음에서 낮은 음으로)
-    for (int hz = 1000; hz &gt;= 400; hz -= 10) {   // 1000Hz부터 400Hz까지 10씩 감소 반복
-      tone(BUZZER_PIN, hz);              // 부저로 해당 주파수의 소리 출력
-      delay(5);                          // 5ms 대기
+    for (int hz = 1000; hz &gt;= 400; hz -= 10) {
+      tone(BUZZER_PIN, hz);
+      delay(5);
     }
-  } else {                               // IR 센서가 아무것도 감지하지 않았다면
+
+  } else {
     // 평상시 대기 상태 (부저 및 모터 정지)
-    noTone(BUZZER_PIN);                  // 부저 소리 정지
-    digitalWrite(MOTOR_A_IA, LOW);       // 모터 정회전 핀 LOW (모터 정지)
-    digitalWrite(MOTOR_A_IB, LOW);       // 모터 역회전 핀 LOW (모터 정지)
+    noTone(BUZZER_PIN);
+    digitalWrite(MOTOR_A_IA, LOW);
+    digitalWrite(MOTOR_A_IB, LOW);
+
     setLEDColor(LOW, LOW, HIGH);  // 파란색 유지
   }</pre>
     </div>
@@ -526,14 +491,18 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
 
 // ✍ 여기에 코드 작성 (문제 7)
 
-  bool isRegistered = true;              // 등록 여부 판단 변수를 참(true)으로 초기화</pre>
+  bool isRegistered = true;</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="7" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans7', this)">정답 보기 ▼</button>
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(7)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans7', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check7"></div>
       <pre class="answer-block hidden" id="ans7">  // 2. RFID 인식 로직
   // 카드가 없으면 다시 루프 처음으로 돌아감
-  if (!mfrc522.PICC_IsNewCardPresent() || !mfrc522.PICC_ReadCardSerial()) {   // 새 카드가 없거나 카드 읽기 실패 시
-    return;                              // loop() 처음으로 되돌아감
+  if (!mfrc522.PICC_IsNewCardPresent() || !mfrc522.PICC_ReadCardSerial()) {
+    return;
   }</pre>
     </div>
   </div>
@@ -561,12 +530,16 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
   if (isRegistered) {</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="8" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans8', this)">정답 보기 ▼</button>
-      <pre class="answer-block hidden" id="ans8">  bool isRegistered = true;              // 등록 여부 판단 변수를 참(true)으로 초기화
-  for (byte i = 0; i &lt; 4; i++) {         // UID 4바이트를 하나씩 비교하는 반복문
-    if (mfrc522.uid.uidByte[i] != registeredUID[i]) {   // 읽은 UID와 등록 UID가 다르면
-      isRegistered = false;              // 등록되지 않은 카드로 판단(false)
-      break;                             // 반복문 즉시 종료
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(8)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans8', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check8"></div>
+      <pre class="answer-block hidden" id="ans8">  bool isRegistered = true;
+  for (byte i = 0; i &lt; 4; i++) {
+    if (mfrc522.uid.uidByte[i] != registeredUID[i]) {
+      isRegistered = false;
+      break;
     }
   }</pre>
     </div>
@@ -585,37 +558,46 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
         <span class="hint-text">등록 카드이면 초록 LED 켜고 모터 정회전으로 문을 열어 5초 대기한 뒤, 역회전으로 닫고 모터 정지 후 파란 LED 대기로 복귀한다.</span>
       </div>
       <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">      break;                             // 반복문 즉시 종료
+      <pre class="context-code">      break;
     }
   }
 
 // ✍ 여기에 코드 작성 (문제 9)
 
-  } else {                               // 등록되지 않은 카드라면
+  } else {
     // 미등록 카드일 경우</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="9" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans9', this)">정답 보기 ▼</button>
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(9)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans9', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check9"></div>
       <pre class="answer-block hidden" id="ans9">  // 3. 잠금 해제 및 자동 잠금 로직
-  if (isRegistered) {                    // 등록된 카드라면
-    Serial.println("주인님 환영합니다. 금고 문을 개방합니다.");   // 환영 메시지 출력
+  if (isRegistered) {
+    Serial.println("주인님 환영합니다. 금고 문을 개방합니다.");
     noTone(BUZZER_PIN);          // 혹시 울리던 부저가 있다면 즉시 정지
     setLEDColor(LOW, HIGH, LOW); // 초록색 켜짐
+
     // DC 모터로 문 열기 (정회전)
-    digitalWrite(MOTOR_A_IA, HIGH);      // 모터 정회전 핀 HIGH (문 열림)
-    digitalWrite(MOTOR_A_IB, LOW);       // 모터 역회전 핀 LOW
+    digitalWrite(MOTOR_A_IA, HIGH);
+    digitalWrite(MOTOR_A_IB, LOW);
+
     // 5초 동안 열린 상태 유지
-    delay(5000);                         // 5초(5000ms) 동안 대기
+    delay(5000);
+
     // 5초 후 자동 잠금 (문 닫기 - 역회전)
-    Serial.println("금고 문을 자동으로 닫습니다.");   // 자동 잠금 메시지 출력
-    digitalWrite(MOTOR_A_IA, LOW);       // 모터 정회전 핀 LOW
-    digitalWrite(MOTOR_A_IB, HIGH);      // 모터 역회전 핀 HIGH (문 닫힘)
+    Serial.println("금고 문을 자동으로 닫습니다.");
+    digitalWrite(MOTOR_A_IA, LOW);
+    digitalWrite(MOTOR_A_IB, HIGH);
     delay(1000);  // 문이 닫히는 데 필요한 시간
+
     // 모터 정지
-    digitalWrite(MOTOR_A_IA, LOW);       // 모터 정회전 핀 LOW (모터 정지)
-    digitalWrite(MOTOR_A_IB, LOW);       // 모터 역회전 핀 LOW (모터 정지)
+    digitalWrite(MOTOR_A_IA, LOW);
+    digitalWrite(MOTOR_A_IB, LOW);
+
     setLEDColor(LOW, LOW, HIGH);  // 파란색 대기 상태로 복귀
-    Serial.println("대기 상태로 돌아갑니다.");   // 대기 복귀 메시지 출력</pre>
+    Serial.println("대기 상태로 돌아갑니다.");</pre>
     </div>
   </div>
 
@@ -632,24 +614,28 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
         <span class="hint-text">미등록 카드이면 빨간 LED를 1초 켰다 끄고, 마지막에 <code>PICC_HaltA</code>와 <code>PCD_StopCrypto1</code>으로 통신을 정리한다.</span>
       </div>
       <div class="block-label">맥락 (빈칸 위치 표시):</div>
-      <pre class="context-code">    Serial.println("대기 상태로 돌아갑니다.");   // 대기 복귀 메시지 출력
+      <pre class="context-code">    Serial.println("대기 상태로 돌아갑니다.");
 
 // ✍ 여기에 코드 작성 (문제 10)
 
 }  // loop() 끝</pre>
       <div class="block-label">내 답:</div>
       <textarea class="answer-textarea" data-q="10" placeholder="여기에 코드를 작성하세요..."></textarea>
-      <button class="reveal-btn" onclick="toggleAnswer('ans10', this)">정답 보기 ▼</button>
-      <pre class="answer-block hidden" id="ans10">  } else {                               // 등록되지 않은 카드라면
+      <div class="btn-row">
+        <button class="check-btn" onclick="checkSyntax(10)">구문 검사</button>
+        <button class="reveal-btn" onclick="toggleAnswer('ans10', this)">정답 보기 ▼</button>
+      </div>
+      <div class="check-result hidden" id="check10"></div>
+      <pre class="answer-block hidden" id="ans10">  } else {
     // 미등록 카드일 경우
-    Serial.println("등록되지 않은 카드입니다!");   // 미등록 경고 메시지 출력
+    Serial.println("등록되지 않은 카드입니다!");
     setLEDColor(HIGH, LOW, LOW);  // 빨간색 켜짐
     delay(1000);                  // 1초간 빨간색 유지
     setLEDColor(LOW, LOW, HIGH);  // 다시 파란색 대기 상태로 복귀
   }
 
-  mfrc522.PICC_HaltA();                  // 현재 카드 통신 중지 (카드 비활성화)
-  mfrc522.PCD_StopCrypto1();             // RFID 암호화 통신 종료</pre>
+  mfrc522.PICC_HaltA();
+  mfrc522.PCD_StopCrypto1();</pre>
     </div>
   </div>
 
@@ -663,6 +649,7 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
 <script>
   const STORAGE_KEY = 'smartsafe_v3_answers';
 
+  /* ── 정답 토글 ── */
   function toggleAnswer(id, btn) {
     const block = document.getElementById(id);
     const hidden = block.classList.toggle('hidden');
@@ -670,16 +657,136 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
     btn.classList.toggle('open', !hidden);
   }
 
+  /* ── 힌트 토글 ── */
+  function toggleHint(btn) {
+    const hint = btn.closest('.hint');
+    const text = hint.querySelector('.hint-text');
+    const hidden = text.classList.toggle('hint-hidden');
+    btn.textContent = hidden ? '보기' : '숨기기';
+    const ph = hint.querySelector('.hint-placeholder');
+    if (hidden && !ph) {
+      hint.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 숨김</span>');
+    } else if (!hidden && ph) {
+      ph.remove();
+    }
+  }
+
+  function toggleAllHints() {
+    const masterBtn = document.getElementById('hint-all-btn');
+    const hiding = masterBtn.dataset.state !== 'hidden';
+    document.querySelectorAll('.hint-text').forEach(t => t.classList.toggle('hint-hidden', hiding));
+    document.querySelectorAll('.hint-toggle').forEach(b => b.textContent = hiding ? '보기' : '숨기기');
+    document.querySelectorAll('.hint-placeholder').forEach(p => p.remove());
+    if (hiding) {
+      document.querySelectorAll('.hint').forEach(h => {
+        h.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 숨김</span>');
+      });
+    }
+    masterBtn.dataset.state = hiding ? 'hidden' : 'shown';
+    masterBtn.textContent   = hiding ? '힌트 전체 보기' : '힌트 전체 숨기기';
+    masterBtn.classList.toggle('all-hidden', hiding);
+  }
+
+  /* ── 구문 검사 (Arduino/C++ 기준) ── */
+  function checkSyntax(qNum) {
+    const ta   = document.querySelector(`[data-q="${qNum}"]`);
+    const div  = document.getElementById('check' + qNum);
+    const code = ta.value;
+
+    div.classList.remove('hidden');
+
+    if (!code.trim()) {
+      div.innerHTML = '<span class="check-empty">코드를 먼저 작성하세요.</span>';
+      return;
+    }
+
+    const errors = [];
+    const lines  = code.split('\n');
+    let braceDepth = 0, parenDepth = 0, bracketDepth = 0;
+    let inBlock = false;
+    const braceStack = [], parenStack = [];
+
+    for (let i = 0; i < lines.length; i++) {
+      const raw  = lines[i];
+      const ln   = i + 1;
+      let inStr  = false, inChr = false, inLine = false;
+
+      for (let j = 0; j < raw.length; j++) {
+        const c = raw[j], nx = raw[j + 1];
+
+        if (inBlock)  { if (c === '*' && nx === '/') { inBlock = false; j++; } continue; }
+        if (inLine)   continue;
+        if (inStr)    { if (c === '\\') j++; else if (c === '"') inStr = false; continue; }
+        if (inChr)    { if (c === '\\') j++; else if (c === "'") inChr = false; continue; }
+
+        if (c === '/' && nx === '/') { inLine  = true;  continue; }
+        if (c === '/' && nx === '*') { inBlock = true; j++; continue; }
+        if (c === '"') { inStr = true; continue; }
+        if (c === "'") { inChr = true; continue; }
+
+        if      (c === '{') { braceDepth++;  braceStack.push(ln); }
+        else if (c === '}') {
+          if (braceDepth <= 0) errors.push(`${ln}번 줄 : 대응하는 '{' 없이 '}' 사용`);
+          else { braceDepth--; braceStack.pop(); }
+        }
+        else if (c === '(') { parenDepth++;  parenStack.push(ln); }
+        else if (c === ')') {
+          if (parenDepth <= 0) errors.push(`${ln}번 줄 : 대응하는 '(' 없이 ')' 사용`);
+          else { parenDepth--; parenStack.pop(); }
+        }
+        else if (c === '[') bracketDepth++;
+        else if (c === ']') {
+          if (bracketDepth <= 0) errors.push(`${ln}번 줄 : 대응하는 '[' 없이 ']' 사용`);
+          else bracketDepth--;
+        }
+      }
+
+      /* 세미콜론 누락 간이 검사 */
+      const t = raw.trim();
+      if (t && !inBlock && !inLine &&
+          !t.startsWith('//') && !t.startsWith('#') &&
+          !t.startsWith('/*') && !t.endsWith('*/') && !t.startsWith('*') &&
+          !t.endsWith('{') && !t.endsWith('}') &&
+          !t.endsWith(',') && !t.endsWith(';') && t !== '') {
+
+        const isStatement =
+          /^(int|bool|byte|float|char|long|unsigned|String|const|void)\s/.test(t) ||
+          /^(return|break|continue)\b/.test(t) ||
+          /^\w+\s*\(/.test(t) ||
+          /^\w[\w.>\[\]]*\s*[+\-*/%]?=/.test(t);
+
+        if (isStatement) {
+          const preview = t.length > 35 ? t.slice(0, 35) + '…' : t;
+          errors.push(`${ln}번 줄 : 세미콜론(;) 누락 가능 → <em>${preview}</em>`);
+        }
+      }
+    }
+
+    if (braceDepth   > 0) braceStack.forEach(l => errors.push(`${l}번 줄에서 열린 '{' 가 닫히지 않음`));
+    if (parenDepth   > 0) parenStack.forEach(l => errors.push(`${l}번 줄에서 열린 '(' 가 닫히지 않음`));
+    if (bracketDepth > 0) errors.push(`'[' ${bracketDepth}개가 닫히지 않음`);
+
+    if (errors.length === 0) {
+      div.innerHTML = '<span class="check-ok">구문 오류 없음</span>';
+    } else {
+      div.innerHTML =
+        `<span class="check-fail">오류 ${errors.length}개 발견</span>` +
+        '<ul>' + errors.map(e => `<li>${e}</li>`).join('') + '</ul>';
+    }
+  }
+
+  /* ── 진행률 ── */
   function updateProgress() {
-    const tas = document.querySelectorAll('.answer-textarea');
+    const tas  = document.querySelectorAll('.answer-textarea');
     const done = [...tas].filter(t => t.value.trim() !== '').length;
     const pct  = Math.round(done / tas.length * 100);
     document.getElementById('progress-bar').style.width = pct + '%';
     const txt = `${done} / ${tas.length} 완료`;
     document.getElementById('progress-text').textContent = txt;
-    document.getElementById('bottom-text').textContent  = txt;
+    document.getElementById('bottom-text').textContent   = txt;
   }
 
+  /* ── 자동 저장 ── */
   let saveTimer;
   function scheduleSave() {
     clearTimeout(saveTimer);
@@ -706,15 +813,14 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
 
   function resetAll() {
     if (!confirm('모든 답안을 초기화하시겠습니까?')) return;
-    document.querySelectorAll('.answer-textarea').forEach(t => {
-      t.value = '';
-      t.style.height = '';
-    });
+    document.querySelectorAll('.answer-textarea').forEach(t => { t.value = ''; t.style.height = ''; });
+    document.querySelectorAll('.check-result').forEach(d => { d.innerHTML = ''; d.classList.add('hidden'); });
     localStorage.removeItem(STORAGE_KEY);
     updateProgress();
     document.getElementById('save-note').textContent = '초기화됨';
   }
 
+  /* ── 마커 라인 강조 ── */
   function highlightMarkers() {
     document.querySelectorAll('.context-code').forEach(pre => {
       pre.innerHTML = pre.innerHTML.split('\n').map(line =>
@@ -725,6 +831,7 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
     });
   }
 
+  /* ── 이벤트 ── */
   document.querySelectorAll('.answer-textarea').forEach(ta => {
     ta.addEventListener('input', function () {
       this.style.height = 'auto';
@@ -733,39 +840,6 @@ void loop() {                            // 반복 실행 함수 (계속 반복�
       scheduleSave();
     });
   });
-
-  function toggleHint(btn) {
-    const hint = btn.closest('.hint');
-    const text = hint.querySelector('.hint-text');
-    const hidden = text.classList.toggle('hint-hidden');
-    btn.textContent = hidden ? '보기' : '숨기기';
-    if (hidden) {
-      hint.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 힌트가 숨겨졌습니다</span>');
-    } else {
-      const ph = hint.querySelector('.hint-placeholder');
-      if (ph) ph.remove();
-    }
-  }
-
-  function toggleAllHints() {
-    const masterBtn = document.getElementById('hint-all-btn');
-    const hiding = masterBtn.dataset.state !== 'hidden';
-    document.querySelectorAll('.hint-text').forEach(t => {
-      t.classList.toggle('hint-hidden', hiding);
-    });
-    document.querySelectorAll('.hint-toggle').forEach(b => {
-      b.textContent = hiding ? '보기' : '숨기기';
-    });
-    document.querySelectorAll('.hint-placeholder').forEach(p => p.remove());
-    if (hiding) {
-      document.querySelectorAll('.hint').forEach(h => {
-        h.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 힌트가 숨겨졌습니다</span>');
-      });
-    }
-    masterBtn.dataset.state = hiding ? 'hidden' : 'shown';
-    masterBtn.textContent = hiding ? '힌트 전체 보기' : '힌트 전체 숨기기';
-    masterBtn.classList.toggle('all-hidden', hiding);
-  }
 
   loadAnswers();
   updateProgress();
