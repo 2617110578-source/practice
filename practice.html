@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스마트 보안 금고 V3 — 빈칸 채우기</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+      background: #f0f4f8;
+      color: #1a202c;
+      line-height: 1.6;
+    }
+
+    /* ── 헤더 ── */
+    .site-header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+      color: #fff;
+      padding: 20px 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,.35);
+    }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px 16px;
+    }
+    .site-header h1 { font-size: 1.25rem; font-weight: 700; margin-bottom: 3px; }
+    .site-header p  { font-size: 0.82rem; opacity: .82; }
+
+    .progress-wrap { background: rgba(255,255,255,.2); height: 5px; }
+    .progress-bar  { background: #34d399; height: 5px; width: 0; transition: width .4s; }
+
+    /* ── 본문 ── */
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 24px 20px 72px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      font-size: .83rem;
+      color: #64748b;
+    }
+
+    /* ── 문제 카드 ── */
+    .q-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      margin-bottom: 26px;
+      overflow: hidden;
+    }
+
+    .q-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 20px;
+      background: #f7faff;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .q-num {
+      background: #2563eb;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .q-title { font-weight: 700; font-size: .92rem; flex: 1; }
+    .q-tag {
+      font-size: .7rem;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .q-body { padding: 16px 20px; }
+
+    /* ── 힌트 ── */
+    .hint {
+      background: #fffbeb;
+      border-left: 3px solid #f59e0b;
+      padding: 9px 13px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 14px;
+      font-size: .855rem;
+    }
+    .hint-label { font-weight: 700; color: #b45309; margin-right: 5px; }
+    .hint-text  { color: #44403c; }
+    .hint-text code {
+      background: #fef3c7;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-family: 'Consolas', monospace;
+      font-size: .82em;
+    }
+
+    /* ── 맥락 코드 ── */
+    .block-label {
+      font-size: .78rem;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .context-code {
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: 'Consolas', 'D2Coding', 'Courier New', monospace;
+      font-size: .8rem;
+      line-height: 1.65;
+      padding: 13px 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      white-space: pre;
+      tab-size: 2;
+    }
+
+    .marker-line {
+      display: block;
+      background: rgba(251,191,36,.13);
+      border-left: 3px solid #fbbf24;
+      margin-left: -16px; padding-left: 13px;
+      margin-right: -16px; padding-right: 16px;
+      color: #fbbf24;
+      font-weight: 600;
+    }
+
+    /* ── 입력 영역 ── */
+    .answer-textarea {
+      width: 100%;
+      min-height: 76px;
+      background: #161b22;
+      color: #e2e8f0;
+      font-family: 'Consolas', 'D2Coding', 'Courier New', monospace;
+      font-size: .8rem;
+      line-height: 1.65;
+      padding: 11px 14px;
+      border: 1.5px solid #30363d;
+      border-radius: 8px;
+      resize: vertical;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      margin-bottom: 11px;
+      tab-size: 2;
+    }
+    .answer-textarea:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,.2);
+    }
+    .answer-textarea::placeholder { color: #4a5568; }
+
+    /* ── 정답 토글 ── */
+    .reveal-btn {
+      display: inline-block;
+      background: none;
+      border: 1.5px solid #cbd5e0;
+      color: #4a5568;
+      padding: 5px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: .78rem;
+      font-family: inherit;
+      transition: all .2s;
+      margin-bottom: 10px;
+    }
+    .reveal-btn:hover { border-color: #2563eb; color: #2563eb; }
+    .reveal-btn.open  { background: #eff6ff; border-color: #2563eb; color: #2563eb; }
+
+    .answer-block {
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: 'Consolas', 'D2Coding', 'Courier New', monospace;
+      font-size: .8rem;
+      line-height: 1.65;
+      padding: 13px 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border-left: 3px solid #34d399;
+      white-space: pre;
+      tab-size: 2;
+    }
+    .hidden { display: none; }
+
+    /* ── 하단 바 ── */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #1e3a5f;
+      color: #e2e8f0;
+      padding: 9px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: .82rem;
+      z-index: 99;
+    }
+    .save-note { font-size: .73rem; color: #94a3b8; margin-left: auto; }
+    .reset-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,.25);
+      color: #94a3b8;
+      padding: 3px 11px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: .73rem;
+      font-family: inherit;
+      transition: all .2s;
+    }
+    .reset-btn:hover { border-color: #ef4444; color: #ef4444; }
+
+    /* ── 힌트 토글 ── */
+    .hint-toggle {
+      background: none;
+      border: 1px solid #d97706;
+      color: #92400e;
+      padding: 1px 7px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: .68rem;
+      font-family: inherit;
+      margin-left: 6px;
+      vertical-align: middle;
+      transition: all .2s;
+    }
+    .hint-toggle:hover { background: #fef3c7; }
+    .hint-text.hint-hidden { display: none; }
+    .hint-placeholder {
+      font-size: .82rem;
+      color: #d97706;
+      font-style: italic;
+    }
+    .hint-all-btn {
+      background: none;
+      border: 1.5px solid #f59e0b;
+      color: #b45309;
+      padding: 3px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: .76rem;
+      font-family: inherit;
+      transition: all .2s;
+    }
+    .hint-all-btn:hover { background: #fffbeb; }
+    .hint-all-btn.all-hidden { background: #fffbeb; border-color: #b45309; }
+
+    @media (max-width: 580px) {
+      .q-tag { display: none; }
+      .site-header h1 { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <h1>스마트 보안 금고 V3 — 빈칸 채우기 문제지</h1>
+    <p>빈칸을 직접 채운 뒤 [정답 보기]로 채점하세요. 답안은 브라우저에 자동 저장됩니다.</p>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+</header>
+
+<main class="main">
+  <div class="meta-row">
+    <span id="progress-text">0 / 10 완료</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="hint-all-btn" id="hint-all-btn" onclick="toggleAllHints()">힌트 전체 숨기기</button>
+      <button class="reset-btn" onclick="resetAll()">전체 초기화</button>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 1 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-title">라이브러리 포함 및 핀 번호 정의</div>
+      <div class="q-tag">전처리기/선언</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text">RFID 통신에 필요한 라이브러리 2개를 포함하고, RFID·부저·IR·모터·LED에 연결된 핀 번호를 <code>#define</code>과 <code>const int</code>로 각각 선언한다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">// ✍ 여기에 코드 작성 (문제 1)
+
+// 객체 생성
+MFRC522 mfrc522(SS_PIN, RST_PIN);   // SS핀과 RST핀을 사용하는 MFRC522 객체 생성</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="1" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans1', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans1">#include &lt;SPI.h&gt;              // SPI 통신 라이브러리 포함 (RFID 모듈과 통신하기 위함)
+#include &lt;MFRC522.h&gt;          // RFID(MFRC522) 제어 라이브러리 포함
+
+// ---------------- 핀 번호 설정 ---------------
+#define RST_PIN       9       // RFID 리셋 핀을 9번으로 정의
+#define SS_PIN        10      // RFID SS(SDA) 핀을 10번으로 정의
+#define BUZZER_PIN    5   // 서보모터 대신 부저 핀으로 변경
+#define IR_SENSOR_PIN 6       // 적외선(IR) 센서 핀을 6번으로 정의
+
+// DC 모터 핀 (이제 문 개방/폐쇄 용도로 사용)
+const int MOTOR_A_IA = 7;     // 모터 정회전 제어 핀을 7번으로 지정
+const int MOTOR_A_IB = 8;     // 모터 역회전 제어 핀을 8번으로 지정
+#define LED_R_PIN 2           // RGB LED의 빨간색(R) 핀을 2번으로 정의
+#define LED_G_PIN 3           // RGB LED의 초록색(G) 핀을 3번으로 정의
+#define LED_B_PIN 4           // RGB LED의 파란색(B) 핀을 4번으로 정의</pre>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 2 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-title">MFRC522 객체 생성 및 등록 UID 배열 선언</div>
+      <div class="q-tag">전역 변수</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text">핀 번호 두 개를 인수로 RFID 객체를 생성하고, 허가된 카드의 UID 4바이트를 16진수 리터럴 배열로 초기화한다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">#define LED_B_PIN 4           // RGB LED의 파란색(B) 핀을 4번으로 정의
+
+// ✍ 여기에 코드 작성 (문제 2)
+
+// RGB LED 색상 제어 함수
+void setLEDColor(int r, int g, int b) {</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="2" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans2', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans2">// 객체 생성
+MFRC522 mfrc522(SS_PIN, RST_PIN);   // SS핀과 RST핀을 사용하는 MFRC522 객체 생성
+
+// ---------------- 등록된 R  Serial.begin      FID 태그 값 ---------------
+// 본인 카드의 UID로 반드시 변경하세요!
+byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};   // 등록된 카드의 UID 4바이트를 배열로 저장</pre>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 3 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div class="q-title">RGB LED 색상 제어 함수</div>
+      <div class="q-tag">함수 정의</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text"><code>int r, g, b</code> 인수를 받아 각 LED 핀에 <code>digitalWrite</code>로 값을 출력하는 함수 전체를 작성한다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">byte registeredUID[4] = {0xDE, 0xAD, 0xBE, 0xEF};   // 등록된 카드의 UID 4바이트를 배열로 저장
+
+// ✍ 여기에 코드 작성 (문제 3)
+
+void setup() {                            // 초기 설정 함수 (전원 인가 시 1회 실행)</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="3" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans3', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans3">// RGB LED 색상 제어 함수
+void setLEDColor(int r, int g, int b) {   // R,G,B 값을 받아 LED 색을 제어하는 함수 정의
+  digitalWrite(LED_R_PIN, r);             // 빨간색 핀에 r 값 출력
+  digitalWrite(LED_G_PIN, g);             // 초록색 핀에 g 값 출력
+  digitalWrite(LED_B_PIN, b);             // 파란색 핀에 b 값 출력
+}</pre>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 4 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">4</div>
+      <div class="q-title">setup() 초기화 함수</div>
+      <div class="q-tag">setup</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text">시리얼·SPI·RFID를 차례로 시작하고, 부저·IR·모터·LED 핀의 모드를 <code>pinMode</code>로 설정한 뒤 시작 메시지와 초기 대기 LED 색을 출력한다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">}  // setLEDColor 함수 끝
+
+// ✍ 여기에 코드 작성 (문제 4)
+
+void loop() {                            // 반복 실행 함수 (계속 반복됨)</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="4" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans4', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans4">void setup() {                            // 초기 설정 함수 (전원 인가 시 1회 실행)
+  Serial.begin(9600);                     // 시리얼 통신 시작 (통신속도 9600bps)
+  SPI.begin();                            // SPI 통신 시작
+  mfrc522.PCD_Init();                     // RFID 모듈 초기화
+  pinMode(BUZZER_PIN, OUTPUT);            // 부저 핀을 출력 모드로 설정
+  pinMode(IR_SENSOR_PIN, INPUT);          // IR 센서 핀을 입력 모드로 설정
+
+  // 모터 제어 핀 출력 설정 (문 제어용)
+  pinMode(MOTOR_A_IA, OUTPUT);            // 모터 정회전 핀을 출력 모드로 설정
+  pinMode(MOTOR_A_IB, OUTPUT);            // 모터 역회전 핀을 출력 모드로 설정
+  pinMode(LED_R_PIN, OUTPUT);            // LED 빨간색 핀을 출력 모드로 설정
+  pinMode(LED_G_PIN, OUTPUT);            // LED 초록색 핀을 출력 모드로 설정
+  pinMode(LED_B_PIN, OUTPUT);            // LED 파란색 핀을 출력 모드로 설정
+  Serial.println("스마트 보안 금고 V3 가동 시작!");   // 시작 메시지를 시리얼 모니터에 출력
+  setLEDColor(LOW, LOW, HIGH);  // 초기 상태: 파란색 대기
+}</pre>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 5 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">5</div>
+      <div class="q-title">loop() 시작 + IR 침입 감지 경고 + 상승 사이렌</div>
+      <div class="q-tag">loop / IR 보안</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text">IR 센서 값을 읽어 LOW(물체 감지)이면 빨간 LED를 켜고, 400 Hz → 1000 Hz 범위를 10씩 올리며 <code>tone()</code>으로 경보음을 낸다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">  setLEDColor(LOW, LOW, HIGH);  // 초기 상태: 파란색 대기
+}
+
+// ✍ 여기에 코드 작성 (문제 5)
+
+    // 빨간색 LED 끄기 (점멸 효과)
+    setLEDColor(LOW, LOW, LOW);          // LED를 모두 꺼서 점멸 효과 만들기</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="5" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans5', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans5">void loop() {                            // 반복 실행 함수 (계속 반복됨)
+  int irState = digitalRead(IR_SENSOR_PIN);   // IR 센서 값을 읽어 irState에 저장
+
+  // 1. 보안 장치 로직 (IR 감지 시: 사이렌 및 빨간색 점멸)
+  if (irState == LOW) {                  // IR 센서가 물체를 감지했다면(LOW)
+    Serial.println("경고: 미승인 접근 감지! 사이렌 작동!");   // 경고 메시지 출력
+    // 빨간색 LED 켜기
+    setLEDColor(HIGH, LOW, LOW);         // LED를 빨간색으로 켜기
+    // 사이렌 소리 (낮은 음에서 높은 음으로)
+    for (int hz = 400; hz &lt;= 1000; hz += 10) {   // 400Hz부터 1000Hz까지 10씩 증가 반복
+      tone(BUZZER_PIN, hz);              // 부저로 해당 주파수의 소리 출력
+      delay(5);                          // 5ms 대기
+    }</pre>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 6 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">6</div>
+      <div class="q-title">하강 사이렌 + else 대기 상태 처리</div>
+      <div class="q-tag">loop / IR 보안</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text">1000 Hz → 400 Hz로 부저를 낮추고, else 분기에서는 <code>noTone</code>·모터 정지·파란 LED로 평상시 대기 상태를 유지한다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">    for (int hz = 400; hz &lt;= 1000; hz += 10) {
+      tone(BUZZER_PIN, hz);
+      delay(5);
+    }
+
+// ✍ 여기에 코드 작성 (문제 6)
+
+  // 2. RFID 인식 로직
+  // 카드가 없으면 다시 루프 처음으로 돌아감</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="6" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans6', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans6">    // 빨간색 LED 끄기 (점멸 효과)
+    setLEDColor(LOW, LOW, LOW);          // LED를 모두 꺼서 점멸 효과 만들기
+    // 사이렌 소리 (높은 음에서 낮은 음으로)
+    for (int hz = 1000; hz &gt;= 400; hz -= 10) {   // 1000Hz부터 400Hz까지 10씩 감소 반복
+      tone(BUZZER_PIN, hz);              // 부저로 해당 주파수의 소리 출력
+      delay(5);                          // 5ms 대기
+    }
+  } else {                               // IR 센서가 아무것도 감지하지 않았다면
+    // 평상시 대기 상태 (부저 및 모터 정지)
+    noTone(BUZZER_PIN);                  // 부저 소리 정지
+    digitalWrite(MOTOR_A_IA, LOW);       // 모터 정회전 핀 LOW (모터 정지)
+    digitalWrite(MOTOR_A_IB, LOW);       // 모터 역회전 핀 LOW (모터 정지)
+    setLEDColor(LOW, LOW, HIGH);  // 파란색 유지
+  }</pre>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 7 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">7</div>
+      <div class="q-title">RFID 카드 감지 체크</div>
+      <div class="q-tag">loop / RFID</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text">새 카드가 없거나 카드 읽기에 실패하면 즉시 <code>return</code>으로 <code>loop()</code> 처음으로 돌아간다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">    setLEDColor(LOW, LOW, HIGH);  // 파란색 유지
+  }
+
+// ✍ 여기에 코드 작성 (문제 7)
+
+  bool isRegistered = true;              // 등록 여부 판단 변수를 참(true)으로 초기화</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="7" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans7', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans7">  // 2. RFID 인식 로직
+  // 카드가 없으면 다시 루프 처음으로 돌아감
+  if (!mfrc522.PICC_IsNewCardPresent() || !mfrc522.PICC_ReadCardSerial()) {   // 새 카드가 없거나 카드 읽기 실패 시
+    return;                              // loop() 처음으로 되돌아감
+  }</pre>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 8 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">8</div>
+      <div class="q-title">UID 비교 반복문</div>
+      <div class="q-tag">loop / RFID</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text">변수를 <code>true</code>로 초기화한 뒤, 4바이트 UID를 인덱스로 하나씩 비교하여 불일치 바이트가 있으면 <code>false</code>로 설정하고 반복을 즉시 종료한다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">  if (!mfrc522.PICC_IsNewCardPresent() || !mfrc522.PICC_ReadCardSerial()) {
+    return;
+  }
+
+// ✍ 여기에 코드 작성 (문제 8)
+
+  // 3. 잠금 해제 및 자동 잠금 로직
+  if (isRegistered) {</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="8" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans8', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans8">  bool isRegistered = true;              // 등록 여부 판단 변수를 참(true)으로 초기화
+  for (byte i = 0; i &lt; 4; i++) {         // UID 4바이트를 하나씩 비교하는 반복문
+    if (mfrc522.uid.uidByte[i] != registeredUID[i]) {   // 읽은 UID와 등록 UID가 다르면
+      isRegistered = false;              // 등록되지 않은 카드로 판단(false)
+      break;                             // 반복문 즉시 종료
+    }
+  }</pre>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 9 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">9</div>
+      <div class="q-title">잠금 해제 및 자동 잠금 로직 (등록 카드)</div>
+      <div class="q-tag">loop / 잠금 제어</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text">등록 카드이면 초록 LED 켜고 모터 정회전으로 문을 열어 5초 대기한 뒤, 역회전으로 닫고 모터 정지 후 파란 LED 대기로 복귀한다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">      break;                             // 반복문 즉시 종료
+    }
+  }
+
+// ✍ 여기에 코드 작성 (문제 9)
+
+  } else {                               // 등록되지 않은 카드라면
+    // 미등록 카드일 경우</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="9" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans9', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans9">  // 3. 잠금 해제 및 자동 잠금 로직
+  if (isRegistered) {                    // 등록된 카드라면
+    Serial.println("주인님 환영합니다. 금고 문을 개방합니다.");   // 환영 메시지 출력
+    noTone(BUZZER_PIN);          // 혹시 울리던 부저가 있다면 즉시 정지
+    setLEDColor(LOW, HIGH, LOW); // 초록색 켜짐
+    // DC 모터로 문 열기 (정회전)
+    digitalWrite(MOTOR_A_IA, HIGH);      // 모터 정회전 핀 HIGH (문 열림)
+    digitalWrite(MOTOR_A_IB, LOW);       // 모터 역회전 핀 LOW
+    // 5초 동안 열린 상태 유지
+    delay(5000);                         // 5초(5000ms) 동안 대기
+    // 5초 후 자동 잠금 (문 닫기 - 역회전)
+    Serial.println("금고 문을 자동으로 닫습니다.");   // 자동 잠금 메시지 출력
+    digitalWrite(MOTOR_A_IA, LOW);       // 모터 정회전 핀 LOW
+    digitalWrite(MOTOR_A_IB, HIGH);      // 모터 역회전 핀 HIGH (문 닫힘)
+    delay(1000);  // 문이 닫히는 데 필요한 시간
+    // 모터 정지
+    digitalWrite(MOTOR_A_IA, LOW);       // 모터 정회전 핀 LOW (모터 정지)
+    digitalWrite(MOTOR_A_IB, LOW);       // 모터 역회전 핀 LOW (모터 정지)
+    setLEDColor(LOW, LOW, HIGH);  // 파란색 대기 상태로 복귀
+    Serial.println("대기 상태로 돌아갑니다.");   // 대기 복귀 메시지 출력</pre>
+    </div>
+  </div>
+
+  <!-- ────────────── 문제 10 ────────────── -->
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num">10</div>
+      <div class="q-title">미등록 카드 처리 및 RFID 통신 종료</div>
+      <div class="q-tag">loop / 잠금 제어</div>
+    </div>
+    <div class="q-body">
+      <div class="hint">
+        <span class="hint-label">힌트 <button class="hint-toggle" onclick="toggleHint(this)">숨기기</button></span>
+        <span class="hint-text">미등록 카드이면 빨간 LED를 1초 켰다 끄고, 마지막에 <code>PICC_HaltA</code>와 <code>PCD_StopCrypto1</code>으로 통신을 정리한다.</span>
+      </div>
+      <div class="block-label">맥락 (빈칸 위치 표시):</div>
+      <pre class="context-code">    Serial.println("대기 상태로 돌아갑니다.");   // 대기 복귀 메시지 출력
+
+// ✍ 여기에 코드 작성 (문제 10)
+
+}  // loop() 끝</pre>
+      <div class="block-label">내 답:</div>
+      <textarea class="answer-textarea" data-q="10" placeholder="여기에 코드를 작성하세요..."></textarea>
+      <button class="reveal-btn" onclick="toggleAnswer('ans10', this)">정답 보기 ▼</button>
+      <pre class="answer-block hidden" id="ans10">  } else {                               // 등록되지 않은 카드라면
+    // 미등록 카드일 경우
+    Serial.println("등록되지 않은 카드입니다!");   // 미등록 경고 메시지 출력
+    setLEDColor(HIGH, LOW, LOW);  // 빨간색 켜짐
+    delay(1000);                  // 1초간 빨간색 유지
+    setLEDColor(LOW, LOW, HIGH);  // 다시 파란색 대기 상태로 복귀
+  }
+
+  mfrc522.PICC_HaltA();                  // 현재 카드 통신 중지 (카드 비활성화)
+  mfrc522.PCD_StopCrypto1();             // RFID 암호화 통신 종료</pre>
+    </div>
+  </div>
+
+</main>
+
+<div class="bottom-bar">
+  <span id="bottom-text">0 / 10 완료</span>
+  <span class="save-note" id="save-note">자동 저장 대기 중</span>
+</div>
+
+<script>
+  const STORAGE_KEY = 'smartsafe_v3_answers';
+
+  function toggleAnswer(id, btn) {
+    const block = document.getElementById(id);
+    const hidden = block.classList.toggle('hidden');
+    btn.textContent = hidden ? '정답 보기 ▼' : '정답 숨기기 ▲';
+    btn.classList.toggle('open', !hidden);
+  }
+
+  function updateProgress() {
+    const tas = document.querySelectorAll('.answer-textarea');
+    const done = [...tas].filter(t => t.value.trim() !== '').length;
+    const pct  = Math.round(done / tas.length * 100);
+    document.getElementById('progress-bar').style.width = pct + '%';
+    const txt = `${done} / ${tas.length} 완료`;
+    document.getElementById('progress-text').textContent = txt;
+    document.getElementById('bottom-text').textContent  = txt;
+  }
+
+  let saveTimer;
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      const data = {};
+      document.querySelectorAll('.answer-textarea').forEach(t => { data[t.dataset.q] = t.value; });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      const now = new Date().toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
+      document.getElementById('save-note').textContent = `저장됨 ${now}`;
+    }, 600);
+  }
+
+  function loadAnswers() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    document.querySelectorAll('.answer-textarea').forEach(t => {
+      if (data[t.dataset.q]) {
+        t.value = data[t.dataset.q];
+        t.style.height = t.scrollHeight + 'px';
+      }
+    });
+  }
+
+  function resetAll() {
+    if (!confirm('모든 답안을 초기화하시겠습니까?')) return;
+    document.querySelectorAll('.answer-textarea').forEach(t => {
+      t.value = '';
+      t.style.height = '';
+    });
+    localStorage.removeItem(STORAGE_KEY);
+    updateProgress();
+    document.getElementById('save-note').textContent = '초기화됨';
+  }
+
+  function highlightMarkers() {
+    document.querySelectorAll('.context-code').forEach(pre => {
+      pre.innerHTML = pre.innerHTML.split('\n').map(line =>
+        line.includes('✍')
+          ? '<span class="marker-line">' + line + '</span>'
+          : line
+      ).join('\n');
+    });
+  }
+
+  document.querySelectorAll('.answer-textarea').forEach(ta => {
+    ta.addEventListener('input', function () {
+      this.style.height = 'auto';
+      this.style.height = this.scrollHeight + 'px';
+      updateProgress();
+      scheduleSave();
+    });
+  });
+
+  function toggleHint(btn) {
+    const hint = btn.closest('.hint');
+    const text = hint.querySelector('.hint-text');
+    const hidden = text.classList.toggle('hint-hidden');
+    btn.textContent = hidden ? '보기' : '숨기기';
+    if (hidden) {
+      hint.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 힌트가 숨겨졌습니다</span>');
+    } else {
+      const ph = hint.querySelector('.hint-placeholder');
+      if (ph) ph.remove();
+    }
+  }
+
+  function toggleAllHints() {
+    const masterBtn = document.getElementById('hint-all-btn');
+    const hiding = masterBtn.dataset.state !== 'hidden';
+    document.querySelectorAll('.hint-text').forEach(t => {
+      t.classList.toggle('hint-hidden', hiding);
+    });
+    document.querySelectorAll('.hint-toggle').forEach(b => {
+      b.textContent = hiding ? '보기' : '숨기기';
+    });
+    document.querySelectorAll('.hint-placeholder').forEach(p => p.remove());
+    if (hiding) {
+      document.querySelectorAll('.hint').forEach(h => {
+        h.insertAdjacentHTML('beforeend', '<span class="hint-placeholder"> — 힌트가 숨겨졌습니다</span>');
+      });
+    }
+    masterBtn.dataset.state = hiding ? 'hidden' : 'shown';
+    masterBtn.textContent = hiding ? '힌트 전체 보기' : '힌트 전체 숨기기';
+    masterBtn.classList.toggle('all-hidden', hiding);
+  }
+
+  loadAnswers();
+  updateProgress();
+  highlightMarkers();
+</script>
+</body>
+</html>
